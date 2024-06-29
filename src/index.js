@@ -5,6 +5,9 @@ const app = express()
 
 const mongoose = require("mongoose")
 
+// converts request body from string -> json
+app.use(express.json())
+
 app.use("/users", userRouter)
 app.use("/note", noteRouter)
 
