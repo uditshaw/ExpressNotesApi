@@ -8,6 +8,12 @@ const mongoose = require("mongoose")
 // converts request body from string -> json
 app.use(express.json())
 
+// logging every request
+app.use((req, res, next) => {
+    console.log(`HTTP method - ${req.method}, URL - ${req.url}`);
+    next()
+})
+
 app.use("/users", userRouter)
 app.use("/note", noteRouter)
 
