@@ -1,7 +1,7 @@
 const userModel = require("../models/user")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
-const SECRET_KEY = "NOTESAPI"
+const SECRET_KEY = process.env.SECRET_KEY
 
 /*
     Process for Signup:-
@@ -56,7 +56,7 @@ const signin = async (req, res) => {
         }
 
         const token = jwt.sign({email: existingUser.email, id: existingUser._id}, SECRET_KEY)
-        res.status(201).json({user: existingUser, token: token})
+        res.status(200).json({user: existingUser, token: token})
 
     } catch (error) {
         console.log(`Signin exception: ${error}`);
